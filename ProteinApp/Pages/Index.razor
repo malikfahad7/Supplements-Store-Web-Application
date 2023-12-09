@@ -1,5 +1,6 @@
-﻿@page "/"
-
+﻿
+@inject NavigationManager navManager
+@page "/"
 <PageTitle>Home</PageTitle>
 <link rel="stylesheet" href="~/css/style.css">
 <header>
@@ -10,17 +11,17 @@
    <div class="Navbarlogo"></div>
    <div class="Navbartexts">
        <div class="hometext">
-       <p class="home">Home</p>
+       <span @onclick="NavigateToHome" class="HoverText">Home</span>
             </div>
             <div class="categorytext">
-       <p>Categories</p>
+                <span @onclick="NavigateToCategories" class="HoverText">Categories</span>
             </div>
             <div class="vitamintext">
-       <p>Vitamins</p>
+                <span @onclick="NavigateToVitamins" class="HoverText">Vitamins</span>
 
             </div>
             <div class="gymsupplementtext">
-                <p>Gym Supplements</p>
+                <span @onclick="NavigateToDeals" class="HoverText">Crazy Deals</span>
             </div>
    </div>
    <div class="Navbarbutton">
@@ -31,8 +32,6 @@
    <div class="Navbarcarticon">
             <i class="fa-solid fa-cart-shopping "></i>
    </div>
-
-
 </div>
 </header>
 <body>
@@ -95,7 +94,22 @@
 </footer>
 @code{
 
-
+    private void NavigateToHome()
+    {
+        navManager.NavigateTo("/");
+    }
+    private void NavigateToCategories()
+    {
+        navManager.NavigateTo("/Categories");
+    }
+     private void NavigateToVitamins()
+    {
+        navManager.NavigateTo("/Vitamins");
+    }
+    private void NavigateToDeals()
+    {
+        navManager.NavigateTo("/Deals");
+    }
 }
 
 

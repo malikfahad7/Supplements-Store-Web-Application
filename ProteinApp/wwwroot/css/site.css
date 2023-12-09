@@ -99,7 +99,7 @@ body{
 }
 .Navbarlogo{
     margin-left: 50px;
-    height: 4.5rem;
+    height: 5rem;
     width: 10rem;
     background-image: url(../logo.jpg);
     background-size: cover;
@@ -111,7 +111,6 @@ body{
 }
 .Navbartexts{
     margin-left: 9rem;
-    margin-top: 22px;
     width: 30%;
     justify-content: space-between;
     display: flex;
@@ -246,4 +245,12 @@ footer{
     width: 4rem;
     background-color: white;
     border-radius: 5px;
+}
+.HoverText{
+     
+    cursor: pointer;
+}
+.HoverText:hover{
+    font-weight: bold;
+    color: rgb(193,89,62);
 }
