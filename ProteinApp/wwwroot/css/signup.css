@@ -1,0 +1,86 @@
+﻿html,
+body {
+    width: 100%;
+    height: 100%;
+
+    margin: 0px;
+    overflow-x: hidden;
+}
+.mainDiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.HalfPic {
+    height: 100%;
+    width: 50%;
+    background-color: rgb(193,89,62);
+}
+
+.HalfContent {
+    height: 100%;
+    width: 50%;
+    display: grid;
+
+}
+.useremail{
+    display: grid;
+   align-items: center;
+}
+
+.Logo {
+    margin-right: 4.3rem;
+    margin-bottom: 3rem;
+    height: 5rem;
+    width: 12rem;
+    background-image: url(../Logo.jpg);
+    background-size: cover;
+}
+
+.inputfield {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+    .inputfield:focus {
+        outline: none;
+        border-color: rgb(193,89,62);
+        box-shadow: 0 0 5px rgb(193,89,62);
+    }
+
+.Buttondiv {
+    margin-top: 2rem;
+    margin-left: 5.8rem;
+    border-radius: 5px;
+    height: 2.5rem;
+    width: 8rem;
+    background-color: rgb(193,89,62);
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+    display: grid;
+}
+
+.logintext {
+    margin-top: 0.4rem;
+    font-weight: bold;
+}
+
+.signupline {
+    margin-top: 1rem;
+    margin-left: 2.4rem;
+    display: flex;
+}
+
+.signuptext {
+    margin-left: 7px;
+    color: rgb(193,89,62);
+    cursor: pointer;
+}

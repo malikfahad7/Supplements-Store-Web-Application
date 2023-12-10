@@ -1,6 +1,84 @@
-﻿@page "/Categories"
-<h3>CategoriesPage</h3>
+﻿@inject NavigationManager navManager
+@page "/Categories"
+<PageTitle>Categories</PageTitle>
+<link rel="stylesheet" href="~/css/style.css">
+<header>
+    <div class="topbar">
+        <p>Use Promo and get 20% Off on all products</p>
+    </div>
+    <div class="Navbar">
+        <div class="Navbarlogo"></div>
+        <div class="Navbartexts">
+            <div class="hometext">
+                <span @onclick="NavigateToHome" class="HoverText">Home</span>
+            </div>
+            <div class="categorytext">
+                <span @onclick="NavigateToCategories" class="HoverText">Categories</span>
+            </div>
+            <div class="vitamintext">
+                <span @onclick="NavigateToVitamins" class="HoverText">Vitamins</span>
+
+            </div>
+            <div class="gymsupplementtext">
+                <span @onclick="NavigateToDeals" class="HoverText">Crazy Deals</span>
+            </div>
+        </div>
+        <div @onclick="NavigateToLogin" class="Navbarbutton">
+            <div class="registertext">
+                <span>Register/Login</span>
+            </div>
+        </div>
+        <div class="Navbarcarticon">
+            <i class="fa-solid fa-cart-shopping "></i>
+        </div>
+    </div>
+</header>
+<body>
+
+    <div class="row1 row">
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </div>
+     <div class="row2 row">
+        <div class="box2"></div>
+        <div class="box1"></div>
+       
+    </div>
+    <div class="row3 row">
+        <div class="box1"></div>
+    </div>
+</body>
+<footer>
+    <div class="footerLogo"></div>
+    <div class="footeremail">
+        <input placeholder="Enter Your Email Address" class="footerinput" />
+        <div class="sendlogo">
+            <i class="fa-solid fa-paper-plane"></i>
+        </div>
+    </div>
+</footer>
+
 
 @code {
+    private void NavigateToHome()
+    {
+        navManager.NavigateTo("/");
+    }
+    private void NavigateToCategories()
+    {
+        navManager.NavigateTo("/Categories");
+    }
+    private void NavigateToVitamins()
+    {
+        navManager.NavigateTo("/Vitamins");
+    }
+    private void NavigateToDeals()
+    {
+        navManager.NavigateTo("/Deals");
+    }
+    private void NavigateToLogin()
+    {
+        navManager.NavigateTo("/login");
+    }
 
 }

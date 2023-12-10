@@ -24,9 +24,9 @@
                 <span @onclick="NavigateToDeals" class="HoverText">Crazy Deals</span>
             </div>
    </div>
-   <div class="Navbarbutton">
+        <div @onclick="NavigateToLogin" class="Navbarbutton">
        <div class="registertext">
-       <p>Register/Login</p>
+                <span>Register/Login</span>
        </div>
    </div>
    <div class="Navbarcarticon">
@@ -102,13 +102,17 @@
     {
         navManager.NavigateTo("/Categories");
     }
-     private void NavigateToVitamins()
+    private void NavigateToVitamins()
     {
         navManager.NavigateTo("/Vitamins");
     }
     private void NavigateToDeals()
     {
         navManager.NavigateTo("/Deals");
+    }
+    private void NavigateToLogin()
+    {
+        navManager.NavigateTo("/login");
     }
 }
 

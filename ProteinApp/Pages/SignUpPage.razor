@@ -1,0 +1,36 @@
+﻿@page "/signup"
+@inject NavigationManager navManager
+<PageTitle>Register</PageTitle>
+<link rel="stylesheet" href="~/css/signup.css">
+<div class="mainDiv">
+    <div class="HalfPic"></div>
+    <div class="HalfContent">
+        <div class="Logo"></div>
+      
+                <input placeholder="Full Name" class="inputfield" />
+            
+          
+                <input placeholder="Email address" class="inputfield" />
+           
+          
+                <input placeholder="Password" class="inputfield" />
+        <div class="Buttondiv">
+            <p class="logintext">Register</p>
+        </div>
+
+        <div class="signupline">
+            <p>Already have an account? </p>
+            <span @onclick="NavigateToLogin" class="signuptext"> Login</span>
+        </div>
+    </div>
+        </div>
+        
+   
+@code {
+
+    private void NavigateToLogin()
+    {
+        navManager.NavigateTo("/login");
+    }
+
+}

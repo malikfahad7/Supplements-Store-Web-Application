@@ -69,10 +69,16 @@ html,
 body {
     width: 100%;
     height: 100%;
-    padding: 0px;
+    padding: 60px 0px 0px 0px;
     margin: 0px;
     overflow-x: hidden;
    
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+
 }
 body{
     width: 100%;
@@ -128,6 +134,13 @@ body{
     display: flex;
     justify-content: center;
    margin-left: 50px;
+    
+}
+.Navbarbutton:hover{
+    background-color: transparent;
+    color: rgb(193,89,62);
+    cursor: pointer;
+    font-weight: bold;
     
 }
 .Navbarcarticon{
