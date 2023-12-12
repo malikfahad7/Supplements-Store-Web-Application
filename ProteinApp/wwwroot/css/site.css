@@ -218,6 +218,7 @@ body{
     background-color: dimgrey;
     width: 22%;
     border-radius: 10px;
+    cursor: pointer;
 }
 footer{
     margin-top: 4rem;

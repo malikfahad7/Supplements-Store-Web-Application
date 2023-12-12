@@ -1,7 +1,96 @@
 ﻿@page "/Deals"
+@inject NavigationManager navManager
+<PageTitle>Deals</PageTitle>
+<link rel="stylesheet" href="~/css/style.css">
+<header>
+    <div class="topbar">
+        <p>Use Promo and get 20% Off on all products</p>
+    </div>
+    <div class="Navbar">
+        <div class="Navbarlogo"></div>
+        <div class="Navbartexts">
+            <div class="hometext">
+                <span @onclick="NavigateToHome" class="HoverText">Home</span>
+            </div>
+            <div class="categorytext">
+                <span @onclick="NavigateToCategories" class="HoverText">Categories</span>
+            </div>
+            <div class="vitamintext">
+                <span @onclick="NavigateToVitamins" class="HoverText">Vitamins</span>
 
-<h3>CrazyDeals</h3>
+            </div>
+            <div class="gymsupplementtext">
+                <span @onclick="NavigateToDeals" class="HoverText">Crazy Deals</span>
+            </div>
+        </div>
+        <div @onclick="NavigateToLogin" class="Navbarbutton">
+            <div class="registertext">
+                <span>Register/Login</span>
+            </div>
+        </div>
+        <div class="Navbarcarticon">
+            <i class="fa-solid fa-cart-shopping "></i>
+        </div>
+    </div>
+</header>
+<body>
 
+    <div class="Row">
+        <div class="Row1">
+            <div class="r1box1 box"></div>
+            <div class="r1box2 box"></div>
+            <div class="r1box3 box"></div>
+            <div class="r1box4 box"></div>
+        </div>
+
+    </div>
+    <div class="Row">
+        <div class="Row2">
+            <div class="r2box1 box"></div>
+            <div class="r2box2 box"></div>
+            <div class="r2box3 box"></div>
+            <div class="r2box4 box"></div>
+        </div>
+
+    </div>
+    <div class="Row">
+        <div class="Row3">
+            <div class="r3box1 box"></div>
+            <div class="r3box2 box"></div>
+            <div class="r3box3 box"></div>
+            <div class="r3box4 box"></div>
+        </div>
+
+    </div>
+</body>
+<footer>
+    <div class="footerLogo"></div>
+    <div class="footeremail">
+        <input placeholder="Enter Your Email Address" class="footerinput" />
+        <div class="sendlogo">
+            <i class="fa-solid fa-paper-plane"></i>
+        </div>
+    </div>
+</footer>
 @code {
-
+    private void NavigateToHome()
+    {
+        navManager.NavigateTo("/");
+    }
+    private void NavigateToCategories()
+    {
+        navManager.NavigateTo("/Categories");
+    }
+    private void NavigateToVitamins()
+    {
+        navManager.NavigateTo("/Vitamins");
+    }
+    private void NavigateToDeals()
+    {
+        navManager.NavigateTo("/Deals");
+    }
+    private void NavigateToLogin()
+    {
+        navManager.NavigateTo("/login");
+    }
 }

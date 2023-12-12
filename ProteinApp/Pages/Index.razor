@@ -60,7 +60,7 @@
     </div>
     <div class="Row">
     <div class="Row1">
-        <div class="r1box1 box"></div>
+        <div class="r1box1 box" @onclick="ProductDetail"></div>
             <div class="r1box2 box"></div>
             <div class="r1box3 box"></div>
     </div>
@@ -113,6 +113,10 @@
     private void NavigateToLogin()
     {
         navManager.NavigateTo("/login");
+    }
+    private void ProductDetail()
+    {
+        navManager.NavigateTo("/productdetails");
     }
 }
 
