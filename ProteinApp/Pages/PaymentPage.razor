@@ -1,0 +1,135 @@
+﻿@using ProteinApp.Models;
+@using System
+@using Microsoft.AspNetCore.Components
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+@inject ProteinApp.Services.CartUpdate cartUpadate
+@inject NavigationManager navManager
+
+@inject ProteinApp.Services.CartService cartService
+
+
+@page "/paymentpage/{total:double}"
+<PageTitle>Payment</PageTitle>
+<link rel="stylesheet" href="~/css/payment.css">
+<header>
+    <div class="Navmainbar">
+        <div class="Navlogomain"></div>
+    </div>
+
+</header>
+
+<body>
+    <div class="maindiv">
+        <div class="informationdiv">
+            <div class="information">
+                <h5>Delivery Address</h5>
+                <div class="fieldrow1">
+                    <input class="r1field" placeholder="First Name" required type="text" @bind-value="firstname"/>
+                    <input class="r1field" placeholder="Last Name" required type="text" />
+                </div>
+                <div class="fieldrow2">
+                    <input class="r2field" placeholder="Address" required type="text"/>
+                    
+                </div>
+                <div class="fieldrow3">
+                    <input class="r3field" placeholder="City" required type="text"/>
+                    <input class="r3field" placeholder="Zip Code" required type="text"/>
+                </div>
+            </div>
+            <div class="information">
+                <h5>Contact Info</h5>
+                <div class="fieldrow1">
+                    <input class="r1field" placeholder="Email For Order Tracking" required type="text" />
+                    <input class="r1field" placeholder="Phone For Delivery Contact" required type="text" />
+                </div>
+                <div class="privacy">
+                    <i class="fa-solid fa-lock"></i>
+                    <p class="privacytext">Your privacy is important to us. We'll only contact you if there's and issue with your order</p>
+                </div>
+                <div class="checkboxdiv">
+                <InputCheckbox class="checkBox" @bind-Value="isChecked"/>
+                    <p class="checkboxtext">Accept Terms and Conditions</p>
+                </div>
+               
+             
+            </div>
+            <div class="ButtonBox">
+                <div class="Proceed">
+                    <p class="divtext">Back To Cart</p>
+                </div>
+                <div class="Back">
+                    <p class="divtext">Save</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ordersummary">
+            <div class="order">
+                <h4>Order Summary</h4><hr/>
+                <div class="ordercartrow">
+                    <div class="carticon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p>@cartUpadate.cartvalue Item(s) in Cart</p>
+                    </div>
+                    <h5>Details</h5>
+                </div><hr />
+                <div class="details1">
+                    <h5 class="settext1">Sub Total:</h5>
+                    <h5 class="settext2">$@total</h5>
+                </div>
+                <div class="details2">
+                    <h5 class="settext1">Delivery Fee:</h5>
+                    <h5 class="settext2">$@deliveryfee</h5>
+                </div><hr />
+                <div class="detailsfinal">
+                    <h5 class="settext1">Total:</h5>
+                    <h5 class="settext2">$@netamount()</h5>
+                </div>
+                
+            </div>
+
+            <div class="placeorderdiv" @onclick="PlaceOrder">
+                <p class="divtext">Place Order</p>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="popup-container" style="display: @(isOrderPlaced ? "flex" : "none")">
+        <div class="popup-content">
+            <span class="popup-close" @onclick="ClosePopup">×</span>
+            <h5>Dear @firstname, Your Order Has Been Placed</h5>
+            <p>Thank you for your order!</p>
+            <button class="closebutton" @onclick="ClosePopup" >Close</button>
+        </div>
+    </div>
+</body>
+
+@code {
+    private string firstname;
+    private double deliveryfee = 115.9;
+    private bool isChecked = false;
+    [Parameter]
+    public double total { get; set; }
+
+    private double netamount()
+    {
+        return Math.Round(total+deliveryfee,2);
+    }
+   
+    private bool isOrderPlaced = false;
+
+    private void PlaceOrder()
+    {
+        // Logic for placing the order goes here
+        // After a successful order placement, set isOrderPlaced to true
+        isOrderPlaced = true;
+    }
+
+    private void ClosePopup()
+    {
+        isOrderPlaced = false;
+    }
+}

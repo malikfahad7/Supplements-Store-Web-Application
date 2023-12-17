@@ -1,7 +1,8 @@
-﻿@page "/Deals"
+﻿@inject ProteinApp.Services.CartUpdate cartUpadate
+@page "/Deals"
 @inject NavigationManager navManager
 <PageTitle>Deals</PageTitle>
-<link rel="stylesheet" href="~/css/style.css">
+<link rel="stylesheet" href="~/css/site.css">
 <header>
     <div class="topbar">
         <p>Use Promo and get 20% Off on all products</p>
@@ -13,7 +14,7 @@
                 <span @onclick="NavigateToHome" class="HoverText">Home</span>
             </div>
             <div class="categorytext">
-                <span @onclick="NavigateToCategories" class="HoverText">Categories</span>
+                <span @onclick="NavigateToCategories" class="HoverText">Trending</span>
             </div>
             <div class="vitamintext">
                 <span @onclick="NavigateToVitamins" class="HoverText">Vitamins</span>
@@ -29,7 +30,10 @@
             </div>
         </div>
         <div class="Navbarcarticon">
-            <i class="fa-solid fa-cart-shopping "></i>
+            <i class="fa-solid fa-cart-shopping " @onclick="shoppingcart"></i>
+            <div class="cartcounterDiv">
+                <p class="cartcounter">@cartCounter</p>
+            </div>
         </div>
     </div>
 </header>
@@ -37,28 +41,160 @@
 
     <div class="Row">
         <div class="Row1">
-            <div class="r1box1 box"></div>
-            <div class="r1box2 box"></div>
-            <div class="r1box3 box"></div>
-            <div class="r1box4 box"></div>
+            <div class="r1box1 box">
+                <div class="r1box1image boximage"></div>
+                <div class="r1box1title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r1box1button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r1box2 box">
+                <div class="r1box2image boximage"></div>
+                <div class="r1box2title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r1box2button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r1box3 box">
+                <div class="r1box3image boximage"></div>
+                <div class="r1box3title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r1box3button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r1box4 box">
+                <div class="r1box4image boximage"></div>
+                <div class="r1box4title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r1box4button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
         </div>
 
     </div>
     <div class="Row">
         <div class="Row2">
-            <div class="r2box1 box"></div>
-            <div class="r2box2 box"></div>
-            <div class="r2box3 box"></div>
-            <div class="r2box4 box"></div>
+            <div class="r2box1 box">
+                <div class="r2box1image boximage"></div>
+                <div class="r2box1title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r2box1button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r2box2 box">
+                <div class="r2box2image boximage"></div>
+                <div class="r2box2title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r2box2button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r2box3 box">
+                <div class="r2box3image boximage"></div>
+                <div class="r2box3title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r2box3button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r2box4 box">
+                <div class="r2box4image boximage"></div>
+                <div class="r2box4title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r2box4button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
         </div>
 
     </div>
     <div class="Row">
         <div class="Row3">
-            <div class="r3box1 box"></div>
-            <div class="r3box2 box"></div>
-            <div class="r3box3 box"></div>
-            <div class="r3box4 box"></div>
+            <div class="r3box1 box">
+                <div class="r3box1image boximage"></div>
+                <div class="r3box1title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r3box1button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r3box2 box">
+                <div class="r3box2image boximage"></div>
+                <div class="r3box2title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r3box2button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r3box3 box">
+                <div class="r3box3image boximage"></div>
+                <div class="r3box3title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r3box3button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r3box4 box">
+                <div class="r3box4image boximage"></div>
+                <div class="r3box4title boxtitle">
+                    <p>@product1name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r3box4button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -73,6 +209,35 @@
     </div>
 </footer>
 @code {
+
+
+    public int cartCounter;
+    protected override void OnInitialized()
+    {
+        cartCounter = cartUpadate.cartvalue;
+    }
+
+    private void shoppingcart()
+    {
+        if (cartCounter == 0)
+        {
+            navManager.NavigateTo("/emptycart");
+        }
+        else
+        {
+            navManager.NavigateTo("/checkout");
+        }
+    }
+    //Setting Home Page Products Name, Description and Price and sending as parameters to ProductDetails Page....
+    string product1name = "Creatine"; string product2name = "Pre-Workout"; string product3name = "Pure-Vitamins"; string product4name = "Mass Gainer";
+    string product5name = "Omega-3"; string product6name = "Whey Protein"; string product7name = "Pre-BlackWolf"; string product8name = "Energy Drink"; string product9name = "Pre-Workout";
+    double product1price = 85.99; double product2price = 56.7; double product3price = 45.2; double product4price = 89;
+    double product5price = 100.2; double product6price = 79.2; double product7price = 23.4; double product8price = 90.4;
+    double product9price = 150.2;
+    //Making description same for all products for now.....
+
+
+
     private void NavigateToHome()
     {
         navManager.NavigateTo("/");

@@ -7,7 +7,7 @@ body {
 }
 .mdiv {
     position: fixed;
-    top: 0;
+    top: 3rem;
     left: 0;
     width: 100%;
     height: 100%;
@@ -17,22 +17,151 @@ body {
 .picdiv {
     height: 100%;
     width: 50%;
-    background-color: rgb(193,89,62);
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .contentdiv {
-    background-color: grey;
     height: 100%;
     width: 50%;
-    display: grid;
-    align-items: center;
-    justify-content: center;
+    
 }
-.pic{
+.pic {
+    
+     margin-right: 12rem;
+    width: 70%;
+    height: 70%;
+    background-image: url(../Images/home1.png);
+    background-size: cover;
+}
+.title{
+    margin-top: 6rem;
+}
+.description{
+    margin-top: 2.5rem;
     width: 80%;
-    height: 80%;
+}
+.quantityDiv{
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%;
+   
+}
+.counterDiv{
+
+    margin-left: 25px;
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.quantitynumber{
+    margin-top: 14px;
+    font-size: 1.2rem;
+}
+.divtext{
+    margin-top: 0.8rem;
+}
+.buttonDiv{
+    margin-top: 0.7rem;
+    width: 80%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addtocart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 45%;
+    color: black;
+    background-color: transparent;
+    border: 2px solid black;
+    cursor: pointer;
+}
+.addtocart:hover{
+    background-color:rgb(255, 106, 0);
+    color: white;
+    border: none;
+}
+.buynow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 45%;
+    color: white;
+    background-color: rgb(255, 106, 0);
+    cursor: pointer;
+}
+    .buynow:hover {
+        background-color: transparent;
+        color: rgb(255, 106, 0);
+        border: 2px solid black;
+    }
+.claimrow1{
+    margin-top: 2rem;
+    width: 50%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+
+}
+.line{
+    margin-left: 2rem;
+    margin-top: 0.8rem;
+}
+.claimrow2 {
+    width: 50%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}
+.claimrow3 {
+    width: 50%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}
+.NavbarBox {
+    justify-content: space-between;
+    height: 7rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10rem;
+    
+    background-color: white;
+}
+
+.NavbarLogo {
+   margin-left: 5rem;
+    height: 5rem;
+    width: 10rem;
     background-color: blue;
+    background-image: url(../logo.jpg);
+    background-size: cover;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.cartcounterBox {
+    margin-left: 3px;
+    background-color: yellow;
+    height: 20px;
+    width: 20px;
+    clip-path: circle(50% at 50% 50%);
+    margin-bottom: 23px;
+    display: flex;
 }

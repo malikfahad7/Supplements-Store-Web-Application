@@ -1,4 +1,4 @@
-﻿
+﻿@inject ProteinApp.Services.CartUpdate cartUpadate
 @inject NavigationManager navManager
 @page "/"
 <PageTitle>Home</PageTitle>
@@ -14,7 +14,7 @@
        <span @onclick="NavigateToHome" class="HoverText">Home</span>
             </div>
             <div class="categorytext">
-                <span @onclick="NavigateToCategories" class="HoverText">Categories</span>
+                <span @onclick="NavigateToCategories" class="HoverText">Trending</span>
             </div>
             <div class="vitamintext">
                 <span @onclick="NavigateToVitamins" class="HoverText">Vitamins</span>
@@ -30,55 +30,140 @@
        </div>
    </div>
    <div class="Navbarcarticon">
-            <i class="fa-solid fa-cart-shopping "></i>
+            <i class="fa-solid fa-cart-shopping " @onclick="shoppingcart"></i>
+            <div class="cartcounterDiv">
+            <p class="cartcounter">@cartCounter</p>
+            </div>
    </div>
 </div>
 </header>
 <body>
     <div class="homebanner"></div>
     <div class="ourproducttext">
-        <p>Our Product</p>
+        <p>Our Products</p>
     </div>
-    <div class="productouter">
-    <div class="Productsbar">
-        <div class="popularproducts">
-            <p class="popular">Popular Products</p>
+   
+    <div class="Row">
+    <div class="Row1">
+        <div class="r1box1 box" @onclick="()=>ProductDetail(product1name,productdescription,product1price)">
+            
+            <div class="r1box1image boximage"></div>
+            <div class="r1box1title boxtitle">
+                <p>@product1name</p>
+                </div>
+            <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+            <div class="r1box1button">
+                <p class="textpadding">Shop Now</p>
+            </div>
         </div>
-        <div class="upcomingproducts">
-            <p>Upcoming Products</p>
-        </div>
-        <div class="bestsellers">
-            <p>Best Sellers</p>
-
-        </div>
-            <div class="crazydeals">
-                <p>Crazy Deals</p>
-
+            <div class="r1box2 box" @onclick="()=>ProductDetail(product2name,productdescription,product2price)">
+                <div class="r1box2image boximage"></div>
+                <div class="r1box2title boxtitle">
+                    <p>@product2name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r1box2button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r1box3 box" @onclick="()=>ProductDetail(product3name,productdescription,product3price)">
+                <div class="r1box3image boximage"></div>
+                <div class="r1box3title boxtitle">
+                    <p>@product3name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r1box3button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
             </div>
     </div>
    
     </div>
     <div class="Row">
-    <div class="Row1">
-        <div class="r1box1 box" @onclick="ProductDetail"></div>
-            <div class="r1box2 box"></div>
-            <div class="r1box3 box"></div>
-    </div>
-   
-    </div>
-    <div class="Row">
         <div class="Row2">
-            <div class="r2box1 box"></div>
-            <div class="r2box2 box"></div>
-            <div class="r2box3 box"></div>
+            <div class="r2box1 box" @onclick="()=>ProductDetail(product4name,productdescription,product4price)">
+                <div class="r2box1image boximage"></div>
+                <div class="r2box1title boxtitle">
+                    <p>@product4name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r2box1button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r2box2 box" @onclick="()=>ProductDetail(product5name,productdescription,product5price)">
+                <div class="r2box2image boximage"></div>
+                <div class="r2box2title boxtitle">
+                    <p>@product5name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r2box2button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r2box3 box" @onclick="()=>ProductDetail(product6name,productdescription,product6price)">
+                <div class="r2box3image boximage"></div>
+                <div class="r2box3title boxtitle">
+                    <p>@product6name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r2box3button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
         </div>
 
     </div>
     <div class="Row">
         <div class="Row3">
-            <div class="r3box1 box"></div>
-            <div class="r3box2 box"></div>
-            <div class="r3box3 box"></div>
+            <div class="r3box1 box" @onclick="()=>ProductDetail(product7name,productdescription,product7price)">
+                <div class="r3box1image boximage"></div>
+                <div class="r3box1title boxtitle">
+                    <p>@product7name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r3box1button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r3box2 box" @onclick="()=>ProductDetail(product8name,productdescription,product8price)">
+                <div class="r3box2image boximage"></div>
+                <div class="r3box2title boxtitle">
+                    <p>@product8name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r3box2button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
+            <div class="r3box3 box" @onclick="()=>ProductDetail(product9name,productdescription,product9price)">
+                <div class="r3box3image boximage"></div>
+                <div class="r3box3title boxtitle">
+                    <p>@product9name</p>
+                </div>
+                <div class="r1box1description">
+                    <p>Natural Dietary Supplement</p>
+                </div>
+                <div class="r3box3button">
+                    <p class="textpadding">Shop Now</p>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -93,7 +178,20 @@
     </div>
 </footer>
 @code{
-
+    public int cartCounter;
+    protected override void OnInitialized()
+    {
+        cartCounter = cartUpadate.cartvalue;
+    }
+    //Setting Home Page Products Name, Description and Price and sending as parameters to ProductDetails Page....
+    string product1name = "Creatine"; string product2name = "Pre-Workout"; string product3name = "Pure-Vitamins"; string product4name = "Mass Gainer";
+    string product5name = "Omega-3"; string product6name = "Whey Protein"; string product7name = "Pre-BlackWolf"; string product8name = "Pure Omega"; string product9name = "Pre-Workout";
+    double product1price = 85.99; double product2price = 56.7; double product3price = 45.2;double product4price = 89;
+    double product5price = 100.2; double product6price = 79.2; double product7price = 23.4; double product8price = 90.4;
+    double product9price = 150.2;
+    //Making description same for all products for now.....
+    string productdescription = "A supplement product is a consumable product that is intended to provide additional nutrients, minerals, vitamins, or other substances to supplement the diet and support overall health. These products come in various forms, including pills, capsules, liquids, powders, and more. They are commonly used to address specific nutritional deficiencies, support fitness goals, or enhance general well-being.";
+    
     private void NavigateToHome()
     {
         navManager.NavigateTo("/");
@@ -114,9 +212,20 @@
     {
         navManager.NavigateTo("/login");
     }
-    private void ProductDetail()
+    private void shoppingcart()
     {
-        navManager.NavigateTo("/productdetails");
+        if (cartCounter == 0)
+        {
+            navManager.NavigateTo("/emptycart");
+        }
+        else
+        {
+            navManager.NavigateTo("/checkout");
+        }
+    }
+    private void ProductDetail(string name,string description, double price)
+    {
+        navManager.NavigateTo($"/productdetails/{name}/{description}/{price}");   
     }
 }
 

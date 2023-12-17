@@ -23,7 +23,7 @@ body {
 .HalfPic {
     height: 100%;
     width: 50%;
-    background-color: rgb(193,89,62);
+    background-color: rgb(255, 106, 0);
 }
 
 .HalfContent {
@@ -77,6 +77,7 @@ body {
     text-align: center;
     font-size: 1rem;
     display: grid;
+    cursor: pointer;
 }
 .logintext{
     margin-top: 0.4rem;

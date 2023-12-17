@@ -1,0 +1,72 @@
+﻿@using ProteinApp.Models;
+@inject NavigationManager navManager
+
+@inject ProteinApp.Services.CartService cartService
+
+
+@page "/checkout"
+<PageTitle>CheckOut</PageTitle>
+<link rel="stylesheet" href="~/css/checkout.css">
+<header>
+    <div class="Navmain">
+        <div class="Navlogo"></div>
+    </div>
+
+</header>
+<body>
+   
+                @foreach (var item in cartService.GetCartItems())
+                {
+                    <div class="productrow">
+                        <div class="imgandtitle">
+                        <div class="productimage"></div>
+                        <div class="producttitle">
+                            <p class="p_title">@item.Name</p>
+                        </div>
+            </div>
+            <div class="counterDiv">
+                
+                <p class="quantitynumber">@item.p_quantity</p>
+              
+            </div>
+                        <div class="productprice">
+                            <p>$@item.total()</p>
+                        </div>
+                    </div>
+                }
+                
+                <h5 class="totaltext">Total : $@totalsum()</h5>
+                   <div class="ButtonBox">
+                    <div class="Proceed" @onclick="NavigateToHome">
+                        <p class="divtext">Back To Home Page</p>
+                    </div>
+                    <div class="Back" @onclick="()=>NavigateToPayment(sum)">
+                        <p class="divtext">Proceed To Payment</p>
+                    </div>
+                </div>
+               
+</body>
+@code{
+    public double sum=0;
+
+    private void NavigateToHome()
+    {
+        navManager.NavigateTo("/");
+    }
+    private void NavigateToPayment(double n)
+    {
+        navManager.NavigateTo($"/paymentpage/{n}");
+    }
+
+    private double totalsum()
+    {
+
+        foreach ( var i in cartService.GetCartItems())
+        {
+            sum = sum + i.total();
+        }
+        return Math.Round(sum,2)
+        ;
+    }   
+
+}

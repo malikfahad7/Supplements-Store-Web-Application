@@ -8,19 +8,36 @@ body {
 
 .row{
     width: 100%;
-    height: 23rem;
+    height: 34rem;
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 4rem;
     margin-top: 3rem;
 }
-.box1{
-    background-color: grey;
-    width: 60%;
-    height: 23rem;
+.box1 {
+    background-image: url(../Images/banner2.png);
+    width: 80%;
+    height: 37rem;
+    background-color: antiquewhite;
+    background-size: cover;
+    cursor: pointer;
 }
-.box2{
-    width: 28%;
-    height: 23rem;
-    background-color: dimgrey;
+.box2 {
+    background-image: url(../Images/banner1.jpg);
+    width: 80%;
+    height: 37rem;
+    background-color: antiquewhite;
+    background-size: cover;
+    cursor: pointer;
+
 }
+.box3 {
+    background-color: antiquewhite;
+    background-image: url(../Images/HeroBanner.png);
+    width: 80%;
+    height: 37rem;
+    background-size: cover;
+    cursor: pointer;
+}
+
+

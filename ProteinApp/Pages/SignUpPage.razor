@@ -1,4 +1,6 @@
 ﻿@page "/signup"
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
 @inject NavigationManager navManager
 <PageTitle>Register</PageTitle>
 <link rel="stylesheet" href="~/css/signup.css">
@@ -7,14 +9,14 @@
     <div class="HalfContent">
         <div class="Logo"></div>
       
-                <input placeholder="Full Name" class="inputfield" />
+                <input placeholder="Full Name" type="text" class="inputfield" @bind-value="name"/>
             
           
-                <input placeholder="Email address" class="inputfield" />
+                <input placeholder="Email address" type="text" class="inputfield" @bind-value="email"/>
            
           
-                <input placeholder="Password" class="inputfield" />
-        <div class="Buttondiv">
+                <input placeholder="Password" type="password" class="inputfield" @bind-value="password"/>
+        <div class="Buttondiv" @onclick="Signup">
             <p class="logintext">Register</p>
         </div>
 
@@ -27,10 +29,29 @@
         
    
 @code {
+    private string name;
+    private string email;
+    private string password;
 
     private void NavigateToLogin()
     {
         navManager.NavigateTo("/login");
+    }
+
+    private void Signup()
+    {
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(name))
+        {
+            ShowPopup("All fields are required.");
+        }
+        else
+        {
+            ShowPopup("Account Registered Successfully");
+        }
+    }
+    private async Task ShowPopup(string message)
+    {
+        await JSRuntime.InvokeVoidAsync("alert", message);
     }
 
 }

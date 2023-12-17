@@ -1,28 +1,129 @@
-﻿@inject NavigationManager navManager
-@page "/productdetails"
+﻿
+@using ProteinApp.Models;
+@inject NavigationManager navManager
+
+@inject ProteinApp.Services.CartService cartService
+@inject ProteinApp.Services.CartUpdate cartUpadate
+
+
+@page "/productdetails/{name}/{description}/{price:double}"
 <PageTitle>Product Detail</PageTitle>
 <link rel="stylesheet" href="~/css/productdetail.css">
+<header>
+    <div class="NavbarBox">
+        <div class="NavbarLogo"></div>
+      
+    </div>
+</header>
 <body>
     <div class="mdiv">
         <div class="picdiv">
-            <div class="pic"></div>
+            <div class="pic">
+            </div>
         </div>
         <div class="contentdiv">
-            <h2 class="title">Product Name</h2>
-            <h5 class="subtitle">This is the product subtitle</h5>
-            <p class="description">Lorem Ipsum has been the industry's standard
-                dummy text ever since the 1500s, when an unknown printer 
-                took a galley of type and scrambled it to make a type
-                specimen book. It has survived not only five centuries,
-                but also the leap into electronic typesetting, remaining
-                essentially unchanged. It was popularised in the 1960s with
-                the release of Letraset sheets containing Lorem Ipsum passages,
-                and more recently with desktop publishing software like Aldus
-                PageMaker including versions of Lorem Ipsum.</p>
+            <h2 class="title">@name</h2>
+            <h5 class="subtitle">$@price</h5>
+            <p class="description">@description</p>
+                <div class="quantityDiv">
+                    <p>Quantity:</p>
+                    <div class="counterDiv">
+                <i class="fa-solid fa-plus" @onclick="Increment"></i>
+                <p class="quantitynumber">@quantity</p>
+                <i class="fa-solid fa-minus" @onclick="Decrement"></i>
+                </div>
+                </div>
+                <div class="buttonDiv">
+                    <div class="addtocart" @onclick="Cancel">
+                        <p class="divtext">Cancel</p>
+                    </div>
+                <div class="buynow" @onclick="AddToCart">
+                        <p class="divtext" >Add To Cart</p>
+                    </div>
+                </div>
+                <div class="claimrow1">
+                <i class="fa-solid fa-truck-fast"></i>
+                <p class="line">Free Shipping for orders above 50$</p>
+                </div>
+                <div class="claimrow2">
+                <i class="fa-regular fa-credit-card"></i>
+                <p class="line">Secured Payment</p>
+                </div>
+                <div class="claimrow3">
+                <i class="fa-solid fa-rotate-left"></i>
+                <p class="line">Return within 15 days</p>
+                </div>
         </div>
     </div>
 </body>
 
 @code {
+
+    public int cartCounter;
+    public double product_price;
+    protected override void OnInitialized()
+    {
+        cartCounter = cartUpadate.cartvalue;
+       
+    }
+    private void NavigateToshoppingcart()
+    {
+        if (cartUpadate.cartvalue == 0)
+        {
+            navManager.NavigateTo("/emptycart");
+        }
+        else
+        {
+            navManager.NavigateTo("/checkout");
+        }
+    }
+    private Product selectedProduct;
+    //Quantity Counter....
+    public int quantity=1;
+    void Increment()
+    {
+        quantity=quantity+1;
+    }
+    void Decrement()
+    {
+        if (quantity > 1)
+        {
+            quantity=quantity-1;
+        }
+    }
+    [Parameter]
+    public string name { get; set; } = "Product Name";
+
+    [Parameter]
+    public double price { get; set; } = 99.9;
+
+    [Parameter]
+    public string description { get; set; } = "Default description";
+
+    [Parameter]
+    public string image { get; set; } = "../Images/h1.png";
+
+    //Add To Cart Logic.....
+    private void AddToCart()
+    {
+        selectedProduct = new Product
+            {
+                p_quantity = quantity,
+                Name = name,
+                Price = Math.Round(price,1),
+                p_img=image,
+
+            };
+        cartService.AddTocart(selectedProduct);
+        cartUpadate.cartIncrement();
+    }
+
+    //Buy Now Logic....
+    private void Cancel()
+    {
+       navManager.NavigateTo("/");
+    }
+
+
 
 }
